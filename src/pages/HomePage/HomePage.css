@@ -1,0 +1,19 @@
+.home-page {
+  padding: 1rem;
+}
+
+.home-page .title {
+  color: var(--color-white);
+  font-size: 5rem;
+}
+
+.home-page .links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}

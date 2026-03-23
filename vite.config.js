@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
       open: true,
       strictPort: true,
       proxy: {
-        "/api": {
+        "/users": {
           target: env.VITE_TEMPLATE_API_URL,
           changeOrigin: true,
           secure: false,
