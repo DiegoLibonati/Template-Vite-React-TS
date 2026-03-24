@@ -4,10 +4,10 @@ import "@/components/UserCard/UserCard.css";
 
 const UserCard = ({ name, username, email, phone, website, company }: UserCardProps) => {
   return (
-    <article className="user-card" aria-label={`Perfil de ${name}`}>
+    <article className="user-card" aria-label={`Profile of ${name}`}>
       <header className="user-card__header">
         <h3 className="user-card__name">{name}</h3>
-        <p className="user-card__username" aria-label={`Usuario: ${username}`}>
+        <p className="user-card__username" aria-label={`Username: ${username}`}>
           @{username}
         </p>
       </header>

@@ -35,7 +35,7 @@ describe("UserCard", () => {
 
   it("should have an accessible label with the user name", () => {
     renderComponent();
-    expect(screen.getByRole("article")).toHaveAccessibleName(`Perfil de ${mockUser.name}`);
+    expect(screen.getByRole("article")).toHaveAccessibleName(`Profile of ${mockUser.name}`);
   });
 
   it("should render the user name in a heading", () => {
