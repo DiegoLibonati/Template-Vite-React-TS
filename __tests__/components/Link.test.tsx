@@ -53,12 +53,17 @@ describe("Link", () => {
     expect(screen.getByRole("link")).toHaveClass("link", "extra-class");
   });
 
+  it("should not add a trailing space to className when no extra class is provided", () => {
+    renderComponent();
+    expect(screen.getByRole("link").className).toBe("link");
+  });
+
   it("should render children text", () => {
     renderComponent({ children: "Go to page" });
     expect(screen.getByRole("link")).toHaveTextContent("Go to page");
   });
 
-  it("should render empty text when no children are provided", () => {
+  it("should render empty when no children are provided", () => {
     renderComponent();
     expect(screen.getByRole("link")).toHaveTextContent("");
   });
@@ -76,5 +81,15 @@ describe("Link", () => {
   it("should navigate to the correct href", () => {
     renderComponent({ href: "/about" });
     expect(screen.getByRole("link")).toHaveAttribute("href", "/about");
+  });
+
+  it("should add rel='noopener noreferrer' for external links (target _blank)", () => {
+    renderComponent({ target: "_blank" });
+    expect(screen.getByRole("link")).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("should not add rel attribute for internal links (target _self)", () => {
+    renderComponent({ target: "_self" });
+    expect(screen.getByRole("link")).not.toHaveAttribute("rel");
   });
 });

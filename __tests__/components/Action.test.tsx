@@ -36,6 +36,11 @@ describe("Action", () => {
     expect(screen.getByRole("button")).toHaveAttribute("id", "test-action");
   });
 
+  it("should have type='button' to prevent accidental form submission", () => {
+    renderComponent();
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+  });
+
   it("should render with the correct aria-label", () => {
     renderComponent();
     expect(screen.getByRole("button", { name: "test action" })).toBeInTheDocument();
@@ -51,12 +56,17 @@ describe("Action", () => {
     expect(screen.getByRole("button")).toHaveClass("action", "extra-class");
   });
 
+  it("should not add a trailing space to className when no extra class is provided", () => {
+    renderComponent();
+    expect(screen.getByRole("button").className).toBe("action");
+  });
+
   it("should render children text", () => {
     renderComponent({ children: "Click me" });
     expect(screen.getByRole("button")).toHaveTextContent("Click me");
   });
 
-  it("should render empty text when no children are provided", () => {
+  it("should render empty when no children are provided", () => {
     renderComponent();
     expect(screen.getByRole("button")).toHaveTextContent("");
   });

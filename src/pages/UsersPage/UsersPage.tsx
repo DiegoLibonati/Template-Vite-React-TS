@@ -17,8 +17,8 @@ const UsersPage = () => {
   const loadUsers = async (): Promise<void> => {
     try {
       setLoading(true);
-      const users = await userService.getAll();
-      setUsers(users);
+      const data = await userService.getAll();
+      setUsers(data);
     } catch {
       setError(true);
     } finally {
@@ -33,32 +33,45 @@ const UsersPage = () => {
   return (
     <main className="users-page">
       <h1 className="title">Users Page</h1>
-      <div className="users-list">
-        {loading ? (
-          <p className="loading">Loading users...</p>
-        ) : error ? (
-          <p className="error">Error loading users. Please try again.</p>
-        ) : (
-          users.map((user) => {
-            return (
+
+      {loading && (
+        <p className="loading" role="status" aria-live="polite">
+          Loading users...
+        </p>
+      )}
+
+      {error && (
+        <p className="error" role="alert">
+          Error loading users. Please try again.
+        </p>
+      )}
+
+      {!loading && !error && (
+        <ul className="users-list" aria-label="User list">
+          {users.map((user) => (
+            <li key={user.id}>
               <UserCard
-                key={user.id}
                 name={user.name}
                 company={user.company}
                 email={user.email}
                 phone={user.phone}
                 username={user.username}
                 website={user.website}
-              ></UserCard>
-            );
-          })
-        )}
-      </div>
-      <div className="links">
-        <Link id="link-home" ariaLabel="link-home" href="/home" target="_self">
-          Go to Home Page
-        </Link>
-      </div>
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <nav aria-label="Page navigation">
+        <ul className="links">
+          <li>
+            <Link id="link-home" ariaLabel="Go to Home Page" href="/home" target="_self">
+              Go to Home Page
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </main>
   );
 };

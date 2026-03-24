@@ -6,11 +6,12 @@ const Action = ({ id, ariaLabel, children, className, onClick }: ActionProps) =>
   return (
     <button
       id={id}
+      type="button"
       aria-label={ariaLabel}
-      className={`action ${className ?? ""}`}
+      className={["action", className].filter(Boolean).join(" ")}
       onClick={onClick}
     >
-      {children ?? ""}
+      {children}
     </button>
   );
 };

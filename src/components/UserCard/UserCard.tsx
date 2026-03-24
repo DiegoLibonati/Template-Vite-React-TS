@@ -1,16 +1,40 @@
-import { UserCardProps } from "@/types/props";
+import type { UserCardProps } from "@/types/props";
 
 import "@/components/UserCard/UserCard.css";
 
 const UserCard = ({ name, username, email, phone, website, company }: UserCardProps) => {
   return (
-    <article className="user-card">
-      <h3 className="user-card__name">${name}</h3>
-      <p className="user-card__username">@${username}</p>
-      <p className="user-card__info">📧 ${email}</p>
-      <p className="user-card__info">📞 ${phone}</p>
-      <p className="user-card__info">🌐 ${website}</p>
-      <p className="user-card__company">🏢 ${company.name}</p>
+    <article className="user-card" aria-label={`Perfil de ${name}`}>
+      <header className="user-card__header">
+        <h3 className="user-card__name">{name}</h3>
+        <p className="user-card__username" aria-label={`Usuario: ${username}`}>
+          @{username}
+        </p>
+      </header>
+
+      <address className="user-card__contact">
+        <p className="user-card__info">
+          <span aria-hidden="true">📧 </span>
+          <a href={`mailto:${email}`}>{email}</a>
+        </p>
+        <p className="user-card__info">
+          <span aria-hidden="true">📞 </span>
+          <a href={`tel:${phone}`}>{phone}</a>
+        </p>
+        <p className="user-card__info">
+          <span aria-hidden="true">🌐 </span>
+          <a href={`https://${website}`} target="_blank" rel="noopener noreferrer">
+            {website}
+          </a>
+        </p>
+      </address>
+
+      <footer className="user-card__footer">
+        <p className="user-card__company">
+          <span aria-hidden="true">🏢 </span>
+          {company.name}
+        </p>
+      </footer>
     </article>
   );
 };

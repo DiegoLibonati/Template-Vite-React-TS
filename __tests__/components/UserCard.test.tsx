@@ -28,53 +28,68 @@ const renderComponent = (overrides?: Partial<UserCardProps>): RenderComponent =>
 };
 
 describe("UserCard", () => {
-  it("should render the user card article element", () => {
+  it("should render an article element", () => {
     const { container } = renderComponent();
-    expect(container.querySelector("article.user-card")).toBeInTheDocument();
+    expect(container.querySelector<HTMLElement>("article.user-card")).toBeInTheDocument();
   });
 
-  it("should render the user name", () => {
+  it("should have an accessible label with the user name", () => {
     renderComponent();
-    expect(screen.getByText(`$${mockUser.name}`)).toBeInTheDocument();
+    expect(screen.getByRole("article")).toHaveAccessibleName(`Perfil de ${mockUser.name}`);
   });
 
-  it("should render the username with prefix", () => {
+  it("should render the user name in a heading", () => {
     renderComponent();
-    expect(screen.getByText(`@$${mockUser.username}`)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(mockUser.name);
   });
 
-  it("should render the email", () => {
+  it("should render the username with @ prefix", () => {
     renderComponent();
-    expect(screen.getByText(`📧 $${mockUser.email}`)).toBeInTheDocument();
+    expect(screen.getByText(`@${mockUser.username}`)).toBeInTheDocument();
   });
 
-  it("should render the phone", () => {
+  it("should render the email as a mailto link", () => {
     renderComponent();
-    expect(screen.getByText(`📞 $${mockUser.phone}`)).toBeInTheDocument();
+    const emailLink = screen.getByRole("link", { name: mockUser.email });
+    expect(emailLink).toHaveAttribute("href", `mailto:${mockUser.email}`);
   });
 
-  it("should render the website", () => {
+  it("should render the phone as a tel link", () => {
     renderComponent();
-    expect(screen.getByText(`🌐 $${mockUser.website}`)).toBeInTheDocument();
+    const phoneLink = screen.getByRole("link", { name: mockUser.phone });
+    expect(phoneLink).toHaveAttribute("href", `tel:${mockUser.phone}`);
+  });
+
+  it("should render the website as an external link", () => {
+    renderComponent();
+    const websiteLink = screen.getByRole("link", { name: mockUser.website });
+    expect(websiteLink).toHaveAttribute("href", `https://${mockUser.website}`);
+    expect(websiteLink).toHaveAttribute("target", "_blank");
+    expect(websiteLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
   it("should render the company name", () => {
     renderComponent();
-    expect(screen.getByText(`🏢 $${mockUser.company.name}`)).toBeInTheDocument();
+    expect(screen.getByText(mockUser.company.name)).toBeInTheDocument();
+  });
+
+  it("should render contact info inside an address element", () => {
+    const { container } = renderComponent();
+    expect(container.querySelector("address.user-card__contact")).toBeInTheDocument();
+  });
+
+  it("should render name and username inside a header element", () => {
+    const { container } = renderComponent();
+    expect(container.querySelector("header.user-card__header")).toBeInTheDocument();
+  });
+
+  it("should render company inside a footer element", () => {
+    const { container } = renderComponent();
+    expect(container.querySelector("footer.user-card__footer")).toBeInTheDocument();
   });
 
   it("should render with a custom name", () => {
     renderComponent({ name: "Jane Smith" });
-    expect(screen.getByText("$Jane Smith")).toBeInTheDocument();
-  });
-
-  it("should apply the user-card__name class to the name heading", () => {
-    const { container } = renderComponent();
-    expect(container.querySelector(".user-card__name")).toBeInTheDocument();
-  });
-
-  it("should apply the user-card__username class", () => {
-    const { container } = renderComponent();
-    expect(container.querySelector(".user-card__username")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent("Jane Smith");
   });
 });

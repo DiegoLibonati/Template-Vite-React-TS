@@ -6,45 +6,55 @@ import { useCounterContext } from "@/hooks/useCounterContext";
 import "@/pages/ContextPage/ContextPage.css";
 
 const ContextPage = () => {
-  const counterContext = useCounterContext();
-
-  const addCounter = (value: number = 1): void => {
-    counterContext.addCounter(value);
-  };
-
-  const subtractCounter = (value: number = 1): void => {
-    counterContext.subtractCounter(value);
-  };
+  const { counterState, addCounter, subtractCounter } = useCounterContext();
 
   return (
     <main className="context-page">
       <h1 className="title">Context Page</h1>
 
-      <div className="counter">
+      <section className="counter" aria-label="Counter">
         <Action
           id="counter-subtract"
-          ariaLabel="counter minus 1"
+          ariaLabel="Subtract 1 from counter"
           className="counter__subtract"
-          onClick={() => subtractCounter()}
+          onClick={() => subtractCounter(1)}
         >
           -
         </Action>
-        <h2 className="counter__number">{counterContext.counterState.counter}</h2>
+
+        <output
+          className="counter__number"
+          aria-live="polite"
+          aria-label={`Counter value: ${counterState.counter}`}
+          htmlFor="counter-subtract counter-plus"
+        >
+          {counterState.counter}
+        </output>
+
         <Action
           id="counter-plus"
-          ariaLabel="counter plus 1"
+          ariaLabel="Add 1 to counter"
           className="counter__plus"
-          onClick={() => addCounter()}
+          onClick={() => addCounter(1)}
         >
           +
         </Action>
-      </div>
+      </section>
 
-      <div className="links">
-        <Link id="link-not-exists" ariaLabel="link-not-exists" href="/pasdasdasdasd" target="_self">
-          Go to Not Exists Page
-        </Link>
-      </div>
+      <nav aria-label="Page navigation">
+        <ul className="links">
+          <li>
+            <Link
+              id="link-not-exists"
+              ariaLabel="Go to unknown page"
+              href="/pasdasdasdasd"
+              target="_self"
+            >
+              Go to Not Exists Page
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </main>
   );
 };

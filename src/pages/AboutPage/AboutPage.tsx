@@ -7,14 +7,25 @@ const AboutPage = () => {
     <main className="about-page">
       <h1 className="title">About Page</h1>
 
-      <div className="links">
-        <Link id="link-product" ariaLabel="link-product" href="/products/12" target="_self">
-          Go to Product Page: 12
-        </Link>
-        <Link id="link-context" ariaLabel="link-context" href="/context" target="_self">
-          Go to Context Page
-        </Link>
-      </div>
+      <nav aria-label="Page navigation">
+        <ul className="links">
+          <li>
+            <Link
+              id="link-product"
+              ariaLabel="Go to Product Page 12"
+              href="/products/12"
+              target="_self"
+            >
+              Go to Product Page: 12
+            </Link>
+          </li>
+          <li>
+            <Link id="link-context" ariaLabel="Go to Context Page" href="/context" target="_self">
+              Go to Context Page
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </main>
   );
 };

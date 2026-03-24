@@ -19,7 +19,7 @@ const renderPage = (): RenderPage => {
 describe("HomePage", () => {
   it("should render the main element", () => {
     const { container } = renderPage();
-    expect(container.querySelector("main.home-page")).toBeInTheDocument();
+    expect(container.querySelector<HTMLElement>("main.home-page")).toBeInTheDocument();
   });
 
   it("should render the Home Page title", () => {
@@ -27,26 +27,28 @@ describe("HomePage", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Home Page");
   });
 
+  it("should render a navigation landmark", () => {
+    renderPage();
+    expect(screen.getByRole("navigation", { name: "Page navigation" })).toBeInTheDocument();
+  });
+
   it("should render the link to About Page (same window)", () => {
     renderPage();
-    const link = screen.getByRole("link", { name: "link-about" });
-    expect(link).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Go to About Page" });
     expect(link).toHaveAttribute("href", "/about");
     expect(link).toHaveAttribute("target", "_self");
   });
 
   it("should render the link to About Page (new window)", () => {
     renderPage();
-    const link = screen.getByRole("link", { name: "link-about-2" });
-    expect(link).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Go to About Page in a new window" });
     expect(link).toHaveAttribute("href", "/about");
     expect(link).toHaveAttribute("target", "_blank");
   });
 
   it("should render the link to Users Page", () => {
     renderPage();
-    const link = screen.getByRole("link", { name: "link-users-2" });
-    expect(link).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Go to Users Page" });
     expect(link).toHaveAttribute("href", "/users");
     expect(link).toHaveAttribute("target", "_self");
   });

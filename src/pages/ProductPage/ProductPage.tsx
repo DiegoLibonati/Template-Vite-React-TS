@@ -8,29 +8,39 @@ import "@/pages/ProductPage/ProductPage.css";
 const ProductPage = () => {
   const { productId } = useParams();
 
-  const alertProductId = (idProduct: string): void => {
-    alert(`Product ID: ${idProduct}`);
+  const alertProductId = (): void => {
+    if (!productId) return;
+    alert(`Product ID: ${productId}`);
   };
 
   return (
     <main className="product-page">
-      <h1 className="title">Product Page: {productId ?? "unknown"}</h1>
+      <h1 className="title">Product Page: {productId ?? "Unknown"}</h1>
 
-      <div className="links">
-        <Link id="link-not-exists" ariaLabel="link-not-exists" href="/pasdasdasdasd" target="_self">
-          Go to Not Exists Page
-        </Link>
-      </div>
+      <nav aria-label="Page navigation">
+        <ul className="links">
+          <li>
+            <Link
+              id="product-link-not-found"
+              ariaLabel="Go to an unknown page"
+              href="/pasdasdasdasd"
+              target="_self"
+            >
+              Go to Not Exists Page
+            </Link>
+          </li>
+        </ul>
+      </nav>
 
-      <div className="actions">
+      <section className="actions" aria-label="Product actions">
         <Action
-          id="action-product-id"
-          ariaLabel="action-product-id"
-          onClick={() => alertProductId(productId!)}
+          id="action-show-product-id"
+          ariaLabel={`Show product ID ${productId ?? "unknown"}`}
+          onClick={alertProductId}
         >
           Click Product Id
         </Action>
-      </div>
+      </section>
     </main>
   );
 };

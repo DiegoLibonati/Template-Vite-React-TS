@@ -19,7 +19,7 @@ const renderPage = (): RenderPage => {
 describe("AboutPage", () => {
   it("should render the main element", () => {
     const { container } = renderPage();
-    expect(container.querySelector("main.about-page")).toBeInTheDocument();
+    expect(container.querySelector<HTMLElement>("main.about-page")).toBeInTheDocument();
   });
 
   it("should render the About Page title", () => {
@@ -27,18 +27,21 @@ describe("AboutPage", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("About Page");
   });
 
+  it("should render a navigation landmark", () => {
+    renderPage();
+    expect(screen.getByRole("navigation", { name: "Page navigation" })).toBeInTheDocument();
+  });
+
   it("should render the link to Product Page 12", () => {
     renderPage();
-    const link = screen.getByRole("link", { name: "link-product" });
-    expect(link).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Go to Product Page 12" });
     expect(link).toHaveAttribute("href", "/products/12");
     expect(link).toHaveAttribute("target", "_self");
   });
 
   it("should render the link to Context Page", () => {
     renderPage();
-    const link = screen.getByRole("link", { name: "link-context" });
-    expect(link).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Go to Context Page" });
     expect(link).toHaveAttribute("href", "/context");
     expect(link).toHaveAttribute("target", "_self");
   });
