@@ -67,18 +67,19 @@ Personal template for Vite React TypeScript projects.
 
 ## Available Scripts
 
-| Command                 | Description               |
-| ----------------------- | ------------------------- |
-| `npm run dev`           | Start development server  |
-| `npm run build`         | Build for production      |
-| `npm run preview`       | Preview production build  |
-| `npm run test`          | Run tests                 |
-| `npm run test:watch`    | Run tests in watch mode   |
-| `npm run test:coverage` | Run tests with coverage   |
-| `npm run lint`          | Check for linting errors  |
-| `npm run lint:fix`      | Fix linting errors        |
-| `npm run format`        | Format code with Prettier |
-| `npm run format:check`  | Check code formatting     |
+| Command                 | Description                   |
+| ----------------------- | ----------------------------- |
+| `npm run dev`           | Start development server      |
+| `npm run build`         | Build for production          |
+| `npm run preview`       | Preview production build      |
+| `npm run test`          | Run tests                     |
+| `npm run test:watch`    | Run tests in watch mode       |
+| `npm run test:coverage` | Run tests with coverage       |
+| `npm run lint`          | Check for linting errors      |
+| `npm run lint:fix`      | Fix linting errors            |
+| `npm run format`        | Format code with Prettier     |
+| `npm run format:check`  | Check code formatting         |
+| `npm run doctor`        | Run React Doctor health check |
 
 ## Portfolio Link
 
@@ -294,6 +295,20 @@ Check for vulnerabilities in dependencies:
 
 ```bash
 npm audit
+```
+
+### React Doctor
+
+Run a health check on the project (security, performance, dead code, architecture):
+
+```bash
+npm run doctor
+```
+
+Use `--verbose` to see specific files and line numbers:
+
+```bash
+npm run doctor -- --verbose
 ```
 
 ## Known Issues

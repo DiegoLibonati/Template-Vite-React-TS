@@ -47,6 +47,7 @@
     "test": "jest --verbose",
     "test:watch": "jest --watchAll --verbose",
     "test:coverage": "jest --coverage",
+    "doctor": "npx react-doctor@latest .",
     "prepare": "husky"
   },
   "lint-staged": {
