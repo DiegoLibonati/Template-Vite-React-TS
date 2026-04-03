@@ -11,12 +11,12 @@ type RenderComponent = {
 };
 
 const renderComponent = (overrides?: Partial<ActionProps>): RenderComponent => {
-  const onClick = jest.fn();
+  const mockOnClick = jest.fn();
 
   const props: ActionProps = {
     id: "test-action",
     ariaLabel: "test action",
-    onClick,
+    onClick: mockOnClick,
     ...overrides,
   };
 
@@ -72,19 +72,19 @@ describe("Action", () => {
   });
 
   it("should call onClick when the button is clicked", async () => {
-    const onClick = jest.fn();
+    const mockOnClick = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ onClick });
+    renderComponent({ onClick: mockOnClick });
 
     await user.click(screen.getByRole("button"));
 
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 
   it("should not call onClick when not clicked", () => {
-    const onClick = jest.fn();
-    renderComponent({ onClick });
-    expect(onClick).not.toHaveBeenCalled();
+    const mockOnClick = jest.fn();
+    renderComponent({ onClick: mockOnClick });
+    expect(mockOnClick).not.toHaveBeenCalled();
   });
 });

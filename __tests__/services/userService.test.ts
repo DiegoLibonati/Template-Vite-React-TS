@@ -11,9 +11,11 @@ describe("userService", () => {
 
   describe("getAll", () => {
     it("should fetch all users successfully", async () => {
+      const mockFetchJson = jest.fn();
+
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockUsers),
+        json: mockFetchJson.mockResolvedValue(mockUsers),
       } as unknown as Response);
 
       const users = await userService.getAll();
@@ -41,9 +43,11 @@ describe("userService", () => {
     });
 
     it("should call fetch exactly once", async () => {
+      const mockFetchJson = jest.fn();
+
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockUsers),
+        json: mockFetchJson.mockResolvedValue(mockUsers),
       } as unknown as Response);
 
       await userService.getAll();
@@ -54,9 +58,11 @@ describe("userService", () => {
 
   describe("getById", () => {
     it("should fetch a user by id successfully", async () => {
+      const mockFetchJson = jest.fn();
+
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockUser),
+        json: mockFetchJson.mockResolvedValue(mockUser),
       } as unknown as Response);
 
       const user = await userService.getById(1);
@@ -84,9 +90,10 @@ describe("userService", () => {
     });
 
     it("should call fetch with the correct user id in the url", async () => {
+      const mockFetchJson = jest.fn();
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockUser),
+        json: mockFetchJson.mockResolvedValue(mockUser),
       } as unknown as Response);
 
       await userService.getById(42);
@@ -95,9 +102,10 @@ describe("userService", () => {
     });
 
     it("should call fetch exactly once", async () => {
+      const mockFetchJson = jest.fn();
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockUser),
+        json: mockFetchJson.mockResolvedValue(mockUser),
       } as unknown as Response);
 
       await userService.getById(1);
