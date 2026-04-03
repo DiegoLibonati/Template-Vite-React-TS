@@ -10,9 +10,9 @@ type RenderComponent = {
   props: ActionProps;
 };
 
-const renderComponent = (overrides?: Partial<ActionProps>): RenderComponent => {
-  const mockOnClick = jest.fn();
+const mockOnClick = jest.fn();
 
+const renderComponent = (overrides?: Partial<ActionProps>): RenderComponent => {
   const props: ActionProps = {
     id: "test-action",
     ariaLabel: "test action",
@@ -26,6 +26,10 @@ const renderComponent = (overrides?: Partial<ActionProps>): RenderComponent => {
 };
 
 describe("Action", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render a button element", () => {
     renderComponent();
     expect(screen.getByRole("button")).toBeInTheDocument();
@@ -72,10 +76,9 @@ describe("Action", () => {
   });
 
   it("should call onClick when the button is clicked", async () => {
-    const mockOnClick = jest.fn();
     const user = userEvent.setup();
 
-    renderComponent({ onClick: mockOnClick });
+    renderComponent();
 
     await user.click(screen.getByRole("button"));
 
@@ -83,8 +86,7 @@ describe("Action", () => {
   });
 
   it("should not call onClick when not clicked", () => {
-    const mockOnClick = jest.fn();
-    renderComponent({ onClick: mockOnClick });
+    renderComponent();
     expect(mockOnClick).not.toHaveBeenCalled();
   });
 });

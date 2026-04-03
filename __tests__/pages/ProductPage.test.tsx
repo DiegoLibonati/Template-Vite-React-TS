@@ -20,6 +20,10 @@ const renderPage = (productId: string = "42"): RenderPage => {
 };
 
 describe("ProductPage", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the main element", () => {
     const { container } = renderPage();
     expect(container.querySelector<HTMLElement>("main.product-page")).toBeInTheDocument();

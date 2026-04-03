@@ -3,6 +3,7 @@ import { getLocalStorage } from "@/helpers/getLocalStorage";
 describe("getLocalStorage", () => {
   afterEach(() => {
     localStorage.clear();
+    jest.clearAllMocks();
   });
 
   it("should return null when the key does not exist", () => {
