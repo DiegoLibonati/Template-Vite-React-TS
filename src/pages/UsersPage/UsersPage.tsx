@@ -5,7 +5,7 @@ import { User } from "@/types/app";
 import Link from "@/components/Link/Link";
 import UserCard from "@/components/UserCard/UserCard";
 
-import { userService } from "@/services/userService";
+import userService from "@/services/userService";
 
 import "@/pages/UsersPage/UsersPage.css";
 
