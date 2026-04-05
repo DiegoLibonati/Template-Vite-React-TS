@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 
-type RenderPage = {
+interface RenderPage {
   container: HTMLElement;
-};
+}
 
 const renderPage = (): RenderPage => {
   const { container } = render(<NotFoundPage />);

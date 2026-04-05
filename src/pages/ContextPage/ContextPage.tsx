@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 import Action from "@/components/Action/Action";
 import Link from "@/components/Link/Link";
 
@@ -5,7 +7,7 @@ import { useCounterContext } from "@/hooks/useCounterContext";
 
 import "@/pages/ContextPage/ContextPage.css";
 
-const ContextPage = () => {
+const ContextPage = (): JSX.Element => {
   const { counterState, addCounter, subtractCounter } = useCounterContext();
 
   return (
@@ -17,7 +19,9 @@ const ContextPage = () => {
           id="counter-subtract"
           ariaLabel="Subtract 1 from counter"
           className="counter__subtract"
-          onClick={() => subtractCounter(1)}
+          onClick={() => {
+            subtractCounter(1);
+          }}
         >
           -
         </Action>
@@ -35,7 +39,9 @@ const ContextPage = () => {
           id="counter-plus"
           ariaLabel="Add 1 to counter"
           className="counter__plus"
-          onClick={() => addCounter(1)}
+          onClick={() => {
+            addCounter(1);
+          }}
         >
           +
         </Action>

@@ -6,9 +6,9 @@ import ContextPage from "@/pages/ContextPage/ContextPage";
 
 import { CounterProvider } from "@/contexts/CounterContext/CounterProvider";
 
-type RenderPage = {
+interface RenderPage {
   container: HTMLElement;
-};
+}
 
 const renderPage = (): RenderPage => {
   const { container } = render(

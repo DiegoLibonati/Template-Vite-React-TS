@@ -1,8 +1,16 @@
+import type { JSX } from "react";
 import type { UserCardProps } from "@/types/props";
 
 import "@/components/UserCard/UserCard.css";
 
-const UserCard = ({ name, username, email, phone, website, company }: UserCardProps) => {
+const UserCard = ({
+  name,
+  username,
+  email,
+  phone,
+  website,
+  company,
+}: UserCardProps): JSX.Element => {
   return (
     <article className="user-card" aria-label={`Profile of ${name}`}>
       <header className="user-card__header">

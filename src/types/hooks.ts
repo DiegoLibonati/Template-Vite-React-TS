@@ -1,3 +1,3 @@
-import { CounterContext } from "@/types/contexts";
+import type { CounterContext } from "@/types/contexts";
 
 export type UseCounterContext = CounterContext;

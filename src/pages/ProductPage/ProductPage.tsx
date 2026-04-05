@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 
+import type { JSX } from "react";
+
 import Link from "@/components/Link/Link";
 import Action from "@/components/Action/Action";
 
 import "@/pages/ProductPage/ProductPage.css";
 
-const ProductPage = () => {
+const ProductPage = (): JSX.Element => {
   const { productId } = useParams();
 
   const alertProductId = (): void => {

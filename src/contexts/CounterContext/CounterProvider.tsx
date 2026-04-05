@@ -1,20 +1,21 @@
 import { useState } from "react";
 
-import { CounterState } from "@/types/states";
-import { CounterProviderProps } from "@/types/props";
+import type { JSX } from "react";
+import type { CounterState } from "@/types/states";
+import type { CounterProviderProps } from "@/types/props";
 
 import { CounterContext } from "@/contexts/CounterContext/CounterContext";
 
-export const CounterProvider = ({ children }: CounterProviderProps) => {
+export const CounterProvider = ({ children }: CounterProviderProps): JSX.Element => {
   const [counterState, setCounterState] = useState<CounterState>({
     counter: 0,
   });
 
-  const addCounter = (value: number = 1): void => {
+  const addCounter = (value = 1): void => {
     setCounterState((state) => ({ ...state, counter: state.counter + value }));
   };
 
-  const subtractCounter = (value: number = 1): void => {
+  const subtractCounter = (value = 1): void => {
     setCounterState((state) => ({ ...state, counter: state.counter - value }));
   };
 

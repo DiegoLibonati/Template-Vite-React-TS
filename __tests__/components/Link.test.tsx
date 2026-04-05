@@ -5,10 +5,10 @@ import type { LinkProps } from "@/types/props";
 
 import Link from "@/components/Link/Link";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: LinkProps;
-};
+}
 
 const renderComponent = (overrides?: Partial<LinkProps>): RenderComponent => {
   const props: LinkProps = {

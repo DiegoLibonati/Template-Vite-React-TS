@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { User } from "@/types/app";
+import type { JSX } from "react";
+import type { User } from "@/types/app";
 
 import Link from "@/components/Link/Link";
 import UserCard from "@/components/UserCard/UserCard";
@@ -9,7 +10,7 @@ import userService from "@/services/userService";
 
 import "@/pages/UsersPage/UsersPage.css";
 
-const UsersPage = () => {
+const UsersPage = (): JSX.Element => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
@@ -27,7 +28,7 @@ const UsersPage = () => {
   };
 
   useEffect(() => {
-    loadUsers();
+    void loadUsers();
   }, []);
 
   return (

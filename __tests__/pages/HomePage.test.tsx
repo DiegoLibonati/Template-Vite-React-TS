@@ -3,9 +3,9 @@ import { MemoryRouter } from "react-router-dom";
 
 import HomePage from "@/pages/HomePage/HomePage";
 
-type RenderPage = {
+interface RenderPage {
   container: HTMLElement;
-};
+}
 
 const renderPage = (): RenderPage => {
   const { container } = render(

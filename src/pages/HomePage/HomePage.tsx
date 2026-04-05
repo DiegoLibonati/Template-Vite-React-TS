@@ -1,8 +1,10 @@
+import type { JSX } from "react";
+
 import Link from "@/components/Link/Link";
 
 import "@/pages/HomePage/HomePage.css";
 
-const HomePage = () => {
+const HomePage = (): JSX.Element => {
   return (
     <main className="home-page">
       <h1 className="title">Home Page</h1>

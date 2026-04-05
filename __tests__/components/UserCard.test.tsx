@@ -6,10 +6,10 @@ import UserCard from "@/components/UserCard/UserCard";
 
 import { mockUser } from "@tests/__mocks__/users.mock";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: UserCardProps;
-};
+}
 
 const renderComponent = (overrides?: Partial<UserCardProps>): RenderComponent => {
   const props: UserCardProps = {

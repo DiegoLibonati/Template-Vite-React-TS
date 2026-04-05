@@ -5,10 +5,10 @@ import type { ActionProps } from "@/types/props";
 
 import Action from "@/components/Action/Action";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: ActionProps;
-};
+}
 
 const mockOnClick = jest.fn();
 

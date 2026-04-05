@@ -1,10 +1,18 @@
 import { Link as LinkRouter } from "react-router-dom";
 
+import type { JSX } from "react";
 import type { LinkProps } from "@/types/props";
 
 import "@/components/Link/Link.css";
 
-const Link = ({ id, href, target = "_blank", ariaLabel, children, className }: LinkProps) => {
+const Link = ({
+  id,
+  href,
+  target = "_blank",
+  ariaLabel,
+  children,
+  className,
+}: LinkProps): JSX.Element => {
   const isExternal = target === "_blank";
 
   return (

@@ -1,7 +1,7 @@
-import { CounterState } from "@/types/states";
+import type { CounterState } from "@/types/states";
 
-export type CounterContext = {
+export interface CounterContext {
   counterState: CounterState;
   addCounter: (value: number) => void;
   subtractCounter: (value: number) => void;
-};
+}

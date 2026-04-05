@@ -4,11 +4,11 @@ import userEvent from "@testing-library/user-event";
 
 import ProductPage from "@/pages/ProductPage/ProductPage";
 
-type RenderPage = {
+interface RenderPage {
   container: HTMLElement;
-};
+}
 
-const renderPage = (productId: string = "42"): RenderPage => {
+const renderPage = (productId = "42"): RenderPage => {
   const { container } = render(
     <MemoryRouter initialEntries={[`/products/${productId}`]}>
       <Routes>

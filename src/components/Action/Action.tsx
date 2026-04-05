@@ -1,8 +1,10 @@
+import type { JSX } from "react";
+
 import type { ActionProps } from "@/types/props";
 
 import "@/components/Action/Action.css";
 
-const Action = ({ id, ariaLabel, children, className, onClick }: ActionProps) => {
+const Action = ({ id, ariaLabel, children, className, onClick }: ActionProps): JSX.Element => {
   return (
     <button
       id={id}

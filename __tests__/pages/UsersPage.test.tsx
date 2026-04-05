@@ -7,9 +7,9 @@ import userService from "@/services/userService";
 
 import { mockUsers } from "@tests/__mocks__/users.mock";
 
-type RenderPage = {
+interface RenderPage {
   container: HTMLElement;
-};
+}
 
 const mockedUserService = userService as jest.Mocked<typeof userService>;
 

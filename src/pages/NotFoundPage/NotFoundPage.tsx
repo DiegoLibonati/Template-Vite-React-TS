@@ -1,6 +1,8 @@
+import type { JSX } from "react";
+
 import "@/pages/NotFoundPage/NotFoundPage.css";
 
-const NotFoundPage = () => {
+const NotFoundPage = (): JSX.Element => {
   return (
     <main className="not-found-page">
       <h1 className="title">Page Not Found</h1>

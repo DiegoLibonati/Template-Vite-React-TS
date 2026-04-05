@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { UseCounterContext } from "@/types/hooks";
+import type { UseCounterContext } from "@/types/hooks";
 
 import { CounterContext } from "@/contexts/CounterContext/CounterContext";
 
