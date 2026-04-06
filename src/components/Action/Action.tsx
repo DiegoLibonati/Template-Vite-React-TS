@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-
 import type { ActionProps } from "@/types/props";
 
 import "@/components/Action/Action.css";

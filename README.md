@@ -78,8 +78,10 @@ Personal template for Vite React TypeScript projects.
 | `npm run test:coverage` | Run tests with coverage       |
 | `npm run lint`          | Check for linting errors      |
 | `npm run lint:fix`      | Fix linting errors            |
+| `npm run lint:all`      | Fix linting all (src - tests) |
 | `npm run format`        | Format code with Prettier     |
 | `npm run format:check`  | Check code formatting         |
+| `npm run format:all`    | Format Prettier (src - tests) |
 | `npm run doctor`        | Run React Doctor health check |
 
 ## Portfolio Link

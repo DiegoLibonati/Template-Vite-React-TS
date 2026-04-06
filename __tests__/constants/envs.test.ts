@@ -23,21 +23,6 @@ describe("envs", () => {
       const result = (undefined as unknown as string) === "true";
       expect(result).toBe(false);
     });
-
-    it("should be false when env var is 'false'", () => {
-      const result = "false" === "true";
-      expect(result).toBe(false);
-    });
-
-    it("should be true when env var is exactly 'true'", () => {
-      const result = "true" === "true";
-      expect(result).toBe(true);
-    });
-
-    it("should be false when env var is 'TRUE' (case sensitive)", () => {
-      const result = "TRUE" === "true";
-      expect(result).toBe(false);
-    });
   });
 
   describe("mock values", () => {
